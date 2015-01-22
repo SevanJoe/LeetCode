@@ -29,20 +29,21 @@ public class LongestPalindromicSubstring {
     public String longestPalindrome(String s) {
         String result = "";
         for (int i = 0; i < s.length(); ++i) {
-            int lastIndex = s.lastIndexOf(s.charAt(i));
-            if (lastIndex == -1) {
-                continue;
-            }
-            String origin = s.substring(i, lastIndex + 1);
-            StringBuilder stringBuilder = new StringBuilder(origin);
-            stringBuilder.reverse();
-            String reverse = stringBuilder.toString();
-            if (origin.equals(reverse)) {
-                if (origin.length() > result.length()) {
-                    result = origin;
-                }
-                if (s.substring(lastIndex).length() < result.length()) {
-                    break;
+            if (s.substring(i).length() <= result.length())
+                break;
+
+            int lastIndex = s.length();
+            while (s.substring(i + 1, lastIndex).lastIndexOf(s.charAt(i)) != -1) {
+                lastIndex = s.substring(i + 1, lastIndex).lastIndexOf(s.charAt(i)) + i + 1;
+                String origin = s.substring(i, lastIndex + 1);
+                StringBuilder stringBuilder = new StringBuilder(origin);
+                stringBuilder.reverse();
+                String reverse = stringBuilder.toString();
+                if (origin.equals(reverse)) {
+                    if (origin.length() > result.length()) {
+                        result = origin;
+                        break;
+                    }
                 }
             }
         }
