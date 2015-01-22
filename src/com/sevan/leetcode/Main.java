@@ -5,8 +5,9 @@ public class Main {
     public static void main(String[] args) {
 //        testTwoSum();
 //        testAddTwoNumbers();
-        testLongestSubstringWithoutRepeatingCharacters();
+//        testLongestSubstringWithoutRepeatingCharacters();
 //        testMedianofTwoSortedArrays();
+        testLongestPalindromicSubstring();
     }
 
     // No.1
@@ -46,5 +47,11 @@ public class Main {
         int[] A = {1, 3, 5, 7, 9};
         int[] B = {2, 4, 6, 8, 10};
         System.out.println(new MedianofTwoSortedArrays().findMedianSortedArrays(A, B));
+    }
+
+    // No.5
+    private static void testLongestPalindromicSubstring() {
+        String s = "ccd";
+        System.out.println(new LongestPalindromicSubstring().longestPalindrome(s));
     }
 }
