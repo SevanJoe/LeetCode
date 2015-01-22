@@ -24,7 +24,7 @@ import java.util.Arrays;
 public class MedianofTwoSortedArrays {
 
     /**
-     * LeetCode No.2 Median of Two Sorted Arrays
+     * LeetCode No.4 Median of Two Sorted Arrays
      * @param A
      * @param B
      * @return
