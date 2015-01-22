@@ -29,26 +29,52 @@ public class LongestSubstringWithoutRepeatingCharacters {
      * @return
      */
     public int lengthOfLongestSubstring(String s) {
-        String result = "";
-        int startIndex = 0;
-        for (int i = 1 ; i <= s.length(); ++i) {
-            String substring = s.substring(startIndex, i);
-            if (substring.length() > result.length()) {
-                result = substring;
-            }
-            String next = "";
-            if (i < s.length()) {
-                next = String.valueOf(s.charAt(i));
-            }
-            if (!next.isEmpty() && substring.contains(next)) {
-                startIndex = s.substring(0, i).lastIndexOf(next) + 1;
-                i = startIndex + result.length() - 1;
-            }
-            if (s.substring(startIndex, s.length()).length() <= result.length()) {
-                break;
-            }
+        if (s == null || s.length() == 0) {
+            return 0;
         }
-        return result.length();
+
+        HashSet<Character> hashSet = new HashSet<Character>();
+        int leftIndex = 0;
+        int rightIndex = 0;
+        int size = 0;
+        while (rightIndex < s.length()) {
+            if (hashSet.contains(s.charAt(rightIndex))) {
+                if (size < rightIndex - leftIndex) {
+                    size = rightIndex - leftIndex;
+                }
+                while (s.charAt(leftIndex) != s.charAt(rightIndex)) {
+                    hashSet.remove(s.charAt(leftIndex));
+                    ++leftIndex;
+                }
+                ++leftIndex;
+            } else {
+                hashSet.add(s.charAt(rightIndex));
+            }
+            ++rightIndex;
+        }
+        size = Math.max(size, rightIndex - leftIndex);
+        return size;
+
+//        String result = "";
+//        int startIndex = 0;
+//        for (int i = 1 ; i <= s.length(); ++i) {
+//            String substring = s.substring(startIndex, i);
+//            if (substring.length() > result.length()) {
+//                result = substring;
+//            }
+//            String next = "";
+//            if (i < s.length()) {
+//                next = String.valueOf(s.charAt(i));
+//            }
+//            if (!next.isEmpty() && substring.contains(next)) {
+//                startIndex = s.substring(0, i).lastIndexOf(next) + 1;
+//                i = startIndex + result.length() - 1;
+//            }
+//            if (s.substring(startIndex, s.length()).length() <= result.length()) {
+//                break;
+//            }
+//        }
+//        return result.length();
 
 //        for (int i = 0; i < s.length(); ++i) {
 //            for (int j = i + 1; j <= s.length(); ++j) {
