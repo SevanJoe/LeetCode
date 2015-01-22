@@ -4,7 +4,8 @@ public class Main {
 
     public static void main(String[] args) {
 //        testTwoSum();
-        testAddTwoNumbers();;
+//        testAddTwoNumbers();
+        testLongestSubstringWithoutRepeatingCharacters();
 //        testMedianofTwoSortedArrays();
     }
 
@@ -32,6 +33,12 @@ public class Main {
             }
             result = result.next;
         }
+    }
+
+    // No.3
+    private static void testLongestSubstringWithoutRepeatingCharacters() {
+        String s = "ABCABCABCD";
+        System.out.println(new LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring(s));
     }
 
     // No.4
