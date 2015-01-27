@@ -24,7 +24,8 @@ public class Main {
 //        testLongestSubstringWithoutRepeatingCharacters();
 //        testMedianofTwoSortedArrays();
 //        testLongestPalindromicSubstring();
-        testZigZagConversion();
+//        testZigZagConversion();
+        testReverseInteger();
     }
 
     // No.1
@@ -76,5 +77,10 @@ public class Main {
     private static void testZigZagConversion() {
         String s = "0123456789";
         System.out.println(new ZigZagConversion().convert(s, 6));
+    }
+
+    // No.7
+    private static void testReverseInteger() {
+        System.out.println(new ReverseInteger().reverse(1534236469));
     }
 }
