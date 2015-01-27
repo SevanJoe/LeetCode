@@ -27,27 +27,51 @@ public class LongestPalindromicSubstring {
      * @return
      */
     public String longestPalindrome(String s) {
+        if (s.length() == 1) {
+            return s;
+        }
         String result = "";
         for (int i = 0; i < s.length(); ++i) {
-            if (s.substring(i).length() <= result.length())
-                break;
-
-            int lastIndex = s.length();
-            while (s.substring(i + 1, lastIndex).lastIndexOf(s.charAt(i)) != -1) {
-                lastIndex = s.substring(i + 1, lastIndex).lastIndexOf(s.charAt(i)) + i + 1;
-                String origin = s.substring(i, lastIndex + 1);
-                StringBuilder stringBuilder = new StringBuilder(origin);
-                stringBuilder.reverse();
-                String reverse = stringBuilder.toString();
-                if (origin.equals(reverse)) {
-                    if (origin.length() > result.length()) {
-                        result = origin;
-                        break;
-                    }
-                }
+            String longest1 = getLongestByCenter(s, i, i);
+            if (longest1.length() > result.length()) {
+                result = longest1;
+            }
+            String longest2 = getLongestByCenter(s, i, i + 1);
+            if (longest2.length() > result.length()) {
+                result = longest2;
             }
         }
-
         return result;
+
+//        for (int i = 0; i < s.length(); ++i) {
+//            if (s.substring(i).length() <= result.length())
+//                break;
+//
+//            int lastIndex = s.length();
+//            while (s.substring(i + 1, lastIndex).lastIndexOf(s.charAt(i)) != -1) {
+//                lastIndex = s.substring(i + 1, lastIndex).lastIndexOf(s.charAt(i)) + i + 1;
+//                String origin = s.substring(i, lastIndex + 1);
+//                StringBuilder stringBuilder = new StringBuilder(origin);
+//                stringBuilder.reverse();
+//                String reverse = stringBuilder.toString();
+//                if (origin.equals(reverse)) {
+//                    if (origin.length() > result.length()) {
+//                        result = origin;
+//                        break;
+//                    }
+//                }
+//            }
+//        }
+//
+//        return result;
+    }
+
+    private String getLongestByCenter(String s, int left, int right) {
+        char[] chars = s.toCharArray();
+        while (left >= 0 && right < s.length() && chars[left] == chars[right]) {
+            --left;
+            ++right;
+        }
+        return s.substring(left + 1, right);
     }
 }
