@@ -25,7 +25,8 @@ public class Main {
 //        testMedianofTwoSortedArrays();
 //        testLongestPalindromicSubstring();
 //        testZigZagConversion();
-        testReverseInteger();
+//        testReverseInteger();
+        testStringtoInteger();
     }
 
     // No.1
@@ -82,5 +83,10 @@ public class Main {
     // No.7
     private static void testReverseInteger() {
         System.out.println(new ReverseInteger().reverse(1534236469));
+    }
+
+    // No.8
+    private static void testStringtoInteger() {
+        System.out.println(new StringtoInteger().atoi("-21474836489"));
     }
 }
