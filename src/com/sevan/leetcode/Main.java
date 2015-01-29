@@ -26,7 +26,8 @@ public class Main {
 //        testLongestPalindromicSubstring();
 //        testZigZagConversion();
 //        testReverseInteger();
-        testStringtoInteger();
+//        testStringtoInteger();
+        testPalindromeNumber();
     }
 
     // No.1
@@ -88,5 +89,10 @@ public class Main {
     // No.8
     private static void testStringtoInteger() {
         System.out.println(new StringtoInteger().atoi("-21474836489"));
+    }
+
+    // No.9
+    private static void testPalindromeNumber() {
+        System.out.println(new PalindromeNumber().isPalindrome(1234321));
     }
 }
